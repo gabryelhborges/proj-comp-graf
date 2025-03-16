@@ -11,8 +11,8 @@
       "RelativeMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\ProcessamentoImagens.csproj|solutionrelative:processamentoimagens\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\ProcessamentoImagens.csproj|C:\\Users\\Gabryel Borges\\Downloads\\proj-comp-graf\\processamentoimagens\\filtros.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\ProcessamentoImagens.csproj|solutionrelative:processamentoimagens\\filtros.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\ProcessamentoImagens.csproj|C:\\Users\\Gabryel Borges\\Downloads\\proj-comp-graf\\processamentoimagens\\frmprincipal.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\ProcessamentoImagens.csproj|solutionrelative:processamentoimagens\\frmprincipal.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -45,7 +45,7 @@
               "RelativeDocumentMoniker": "ProcessamentoImagens\\frmPrincipal.cs",
               "ToolTip": "C:\\Users\\Gabryel Borges\\Downloads\\proj-comp-graf\\ProcessamentoImagens\\frmPrincipal.cs*",
               "RelativeToolTip": "ProcessamentoImagens\\frmPrincipal.cs*",
-              "ViewState": "AgIAACEAAAAAAAAAAAAowDcAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAALAAAAAAAAAAAAAiwMAAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-08T19:51:38.299Z",
               "IsPinned": true,
@@ -54,14 +54,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Filtros.cs",
-              "DocumentMoniker": "C:\\Users\\Gabryel Borges\\Downloads\\proj-comp-graf\\ProcessamentoImagens\\Filtros.cs",
-              "RelativeDocumentMoniker": "ProcessamentoImagens\\Filtros.cs",
-              "ToolTip": "C:\\Users\\Gabryel Borges\\Downloads\\proj-comp-graf\\ProcessamentoImagens\\Filtros.cs",
-              "RelativeToolTip": "ProcessamentoImagens\\Filtros.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAvAAAAAAAAAA==",
+              "Title": "frmPrincipal.designer.cs",
+              "DocumentMoniker": "C:\\Users\\Gabryel Borges\\Downloads\\proj-comp-graf\\ProcessamentoImagens\\frmPrincipal.designer.cs",
+              "RelativeDocumentMoniker": "ProcessamentoImagens\\frmPrincipal.designer.cs",
+              "ToolTip": "C:\\Users\\Gabryel Borges\\Downloads\\proj-comp-graf\\ProcessamentoImagens\\frmPrincipal.designer.cs",
+              "RelativeToolTip": "ProcessamentoImagens\\frmPrincipal.designer.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAQwEcAAABYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-08T19:52:04.964Z",
+              "WhenOpened": "2025-03-16T19:21:57.141Z",
+              "IsPinned": true,
               "EditorCaption": ""
             }
           ]
