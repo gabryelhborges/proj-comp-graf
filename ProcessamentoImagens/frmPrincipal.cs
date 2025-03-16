@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -10,12 +11,31 @@ namespace ProcessamentoImagens
         private bool flag = true;
         private int x1, y1, x2, y2;
         private Point shadowEnd;
+        private List<Polygon> polygons = new List<Polygon>();
+        private Polygon currentPolygon = null;
+        private int selectedPolygonIndex = -1;
+
+
+        public class Polygon
+        {
+            public List<Point> OriginalVertices { get; set; }
+            public List<Point> CurrentVertices { get; set; }
+            public double[,] TransformationMatrix { get; set; }
+            public Color Color { get; set; }
+
+            public Polygon()
+            {
+                OriginalVertices = new List<Point>();
+                CurrentVertices = new List<Point>();
+                TransformationMatrix = new double[3, 3] { { 1, 0, 0 }, { 0, 1, 0 }, { 0, 0, 1 } };
+                Color = Color.Black;
+            }
+        }
 
         public frmPrincipal()
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
-            comboBoxAlgoritmos.SelectedIndex = 1;
 
             // Habilitar Double Buffering usando reflexão
             panel1.GetType().InvokeMember(
@@ -70,22 +90,22 @@ namespace ProcessamentoImagens
             {
                 x1 = e.X;
                 y1 = e.Y;
-                Console.WriteLine("Primeiro click: Coord -> X = " + x1 + " Y = " + y1);
+                //Console.WriteLine("Primeiro click: Coord -> X = " + x1 + " Y = " + y1);
             }
             else
             {
                 x2 = e.X;
                 y2 = e.Y;
-                Console.WriteLine("Segundo click: Coord -> X = " + x2 + " Y = " + y2);
+                //Console.WriteLine("Segundo click: Coord -> X = " + x2 + " Y = " + y2);
 
                 using (Graphics g = Graphics.FromImage(canvas))
                 {
-                    switch (comboBoxAlgoritmos.SelectedIndex)
-                    {
-                        case 0: DrawLineDDA(g, canvas, x1, y1, x2, y2, new Pen(Color.Red)); break;
-                        case 1: DrawLineGeneralEquation(g, canvas, x1, y1, x2, y2, new Pen(Color.Blue)); break;
-                        case 2: DrawLineMidpoint(g, canvas, x1, y1, x2, y2, new Pen(Color.Green)); break;
-                    }
+                    if (radioDDA.Checked)
+                        DrawLineDDA(g, canvas, x1, y1, x2, y2, new Pen(Color.Red));
+                    else if (radioGeneralEquation.Checked)
+                        DrawLineGeneralEquation(g, canvas, x1, y1, x2, y2, new Pen(Color.Blue));
+                    else if (radioMidpoint.Checked)
+                        DrawLineMidpoint(g, canvas, x1, y1, x2, y2, new Pen(Color.Green));
                 }
                 panel1.Invalidate();
             }
@@ -99,12 +119,12 @@ namespace ProcessamentoImagens
             {
                 using (Pen shadowPen = new Pen(Color.Gray, 1))
                 {
-                    switch (comboBoxAlgoritmos.SelectedIndex)
-                    {
-                        case 0: DrawLineDDA(e.Graphics, canvas, x1, y1, shadowEnd.X, shadowEnd.Y, shadowPen); break;
-                        case 1: DrawLineGeneralEquation(e.Graphics, canvas, x1, y1, shadowEnd.X, shadowEnd.Y, shadowPen); break;
-                        case 2: DrawLineMidpoint(e.Graphics, canvas, x1, y1, shadowEnd.X, shadowEnd.Y, shadowPen); break;
-                    }
+                    if (radioDDA.Checked)
+                        DrawLineDDA(e.Graphics, canvas, x1, y1, shadowEnd.X, shadowEnd.Y, shadowPen);
+                    else if (radioGeneralEquation.Checked)
+                        DrawLineGeneralEquation(e.Graphics, canvas, x1, y1, shadowEnd.X, shadowEnd.Y, shadowPen);
+                    else if (radioMidpoint.Checked)
+                        DrawLineMidpoint(e.Graphics, canvas, x1, y1, shadowEnd.X, shadowEnd.Y, shadowPen);
                 }
             }
         }

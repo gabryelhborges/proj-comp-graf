@@ -18,47 +18,97 @@
         private void InitializeComponent()
         {
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.panelOpcoes = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBoxAlgoritmos = new System.Windows.Forms.ComboBox();
+            this.tabControlOpcoes = new System.Windows.Forms.TabControl();
+            this.tabRetas = new System.Windows.Forms.TabPage();
+            this.tabPoligonos = new System.Windows.Forms.TabPage();
+            this.tabOvais = new System.Windows.Forms.TabPage();
+            this.radioDDA = new System.Windows.Forms.RadioButton();
+            this.radioGeneralEquation = new System.Windows.Forms.RadioButton();
+            this.radioMidpoint = new System.Windows.Forms.RadioButton();
             this.buttonLimparImg = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panelOpcoes.SuspendLayout();
+            this.tabControlOpcoes.SuspendLayout();
+            this.tabRetas.SuspendLayout();
             this.SuspendLayout();
+
             // 
-            // panelOpcoes
+            // tabControlOpcoes
             // 
-            this.panelOpcoes.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panelOpcoes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelOpcoes.Controls.Add(this.label1);
-            this.panelOpcoes.Controls.Add(this.comboBoxAlgoritmos);
-            this.panelOpcoes.Controls.Add(this.buttonLimparImg);
-            this.panelOpcoes.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelOpcoes.Location = new System.Drawing.Point(728, 0);
-            this.panelOpcoes.Name = "panelOpcoes";
-            this.panelOpcoes.Size = new System.Drawing.Size(252, 509);
-            this.panelOpcoes.TabIndex = 103;
+            this.tabControlOpcoes.Controls.Add(this.tabRetas);
+            this.tabControlOpcoes.Controls.Add(this.tabPoligonos);
+            this.tabControlOpcoes.Controls.Add(this.tabOvais);
+            this.tabControlOpcoes.Dock = System.Windows.Forms.DockStyle.Right;
+            this.tabControlOpcoes.Location = new System.Drawing.Point(728, 0);
+            this.tabControlOpcoes.Name = "tabControlOpcoes";
+            this.tabControlOpcoes.SelectedIndex = 0;
+            this.tabControlOpcoes.Size = new System.Drawing.Size(252, 509);
+            this.tabControlOpcoes.TabIndex = 103;
+
             // 
-            // label1
+            // tabRetas
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 67);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Algoritmo:";
+            this.tabRetas.Controls.Add(this.radioDDA);
+            this.tabRetas.Controls.Add(this.radioGeneralEquation);
+            this.tabRetas.Controls.Add(this.radioMidpoint);
+            this.tabRetas.Controls.Add(this.buttonLimparImg);
+            this.tabRetas.Location = new System.Drawing.Point(4, 22);
+            this.tabRetas.Name = "tabRetas";
+            this.tabRetas.Padding = new System.Windows.Forms.Padding(3);
+            this.tabRetas.Size = new System.Drawing.Size(244, 483);
+            this.tabRetas.TabIndex = 0;
+            this.tabRetas.Text = "Retas";
+
             // 
-            // comboBoxAlgoritmos
+            // tabPoligonos
             // 
-            this.comboBoxAlgoritmos.FormattingEnabled = true;
-            this.comboBoxAlgoritmos.Items.AddRange(new object[] {
-            "DDA",
-            "Equação geral da reta",
-            "Ponto médio"});
-            this.comboBoxAlgoritmos.Location = new System.Drawing.Point(75, 62);
-            this.comboBoxAlgoritmos.Name = "comboBoxAlgoritmos";
-            this.comboBoxAlgoritmos.Size = new System.Drawing.Size(159, 21);
-            this.comboBoxAlgoritmos.TabIndex = 2;
+            this.tabPoligonos.Location = new System.Drawing.Point(4, 22);
+            this.tabPoligonos.Name = "tabPoligonos";
+            this.tabPoligonos.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPoligonos.Size = new System.Drawing.Size(244, 483);
+            this.tabPoligonos.TabIndex = 1;
+            this.tabPoligonos.Text = "Polígonos";
+
+            // 
+            // tabOvais
+            // 
+            this.tabOvais.Location = new System.Drawing.Point(4, 22);
+            this.tabOvais.Name = "tabOvais";
+            this.tabOvais.Padding = new System.Windows.Forms.Padding(3);
+            this.tabOvais.Size = new System.Drawing.Size(244, 483);
+            this.tabOvais.TabIndex = 2;
+            this.tabOvais.Text = "Ovais";
+
+            // 
+            // radioDDA
+            // 
+            this.radioDDA.AutoSize = true;
+            this.radioDDA.Location = new System.Drawing.Point(18, 62);
+            this.radioDDA.Name = "radioDDA";
+            this.radioDDA.Size = new System.Drawing.Size(50, 17);
+            this.radioDDA.TabIndex = 2;
+            this.radioDDA.Text = "DDA";
+            this.radioDDA.Checked = true; // Definido como padrão
+
+            // 
+            // radioGeneralEquation
+            // 
+            this.radioGeneralEquation.AutoSize = true;
+            this.radioGeneralEquation.Location = new System.Drawing.Point(18, 85);
+            this.radioGeneralEquation.Name = "radioGeneralEquation";
+            this.radioGeneralEquation.Size = new System.Drawing.Size(150, 17);
+            this.radioGeneralEquation.TabIndex = 3;
+            this.radioGeneralEquation.Text = "Equação geral da reta";
+
+            // 
+            // radioMidpoint
+            // 
+            this.radioMidpoint.AutoSize = true;
+            this.radioMidpoint.Location = new System.Drawing.Point(18, 108);
+            this.radioMidpoint.Name = "radioMidpoint";
+            this.radioMidpoint.Size = new System.Drawing.Size(80, 17);
+            this.radioMidpoint.TabIndex = 4;
+            this.radioMidpoint.Text = "Ponto médio";
+
             // 
             // buttonLimparImg
             // 
@@ -70,6 +120,7 @@
             this.buttonLimparImg.Text = "Limpar Imagem";
             this.buttonLimparImg.UseVisualStyleBackColor = true;
             this.buttonLimparImg.Click += new System.EventHandler(this.btnLimpar_Click);
+
             // 
             // panel1
             // 
@@ -82,6 +133,7 @@
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.panel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseClick);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
+
             // 
             // frmPrincipal
             // 
@@ -89,22 +141,27 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(980, 509);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panelOpcoes);
+            this.Controls.Add(this.tabControlOpcoes);
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Formulário Principal";
-            this.panelOpcoes.ResumeLayout(false);
-            this.panelOpcoes.PerformLayout();
+            this.tabControlOpcoes.ResumeLayout(false);
+            this.tabRetas.ResumeLayout(false);
+            this.tabRetas.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.OpenFileDialog openFileDialog;
-        private System.Windows.Forms.Panel panelOpcoes;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TabControl tabControlOpcoes;
+        private System.Windows.Forms.TabPage tabRetas;
+        private System.Windows.Forms.TabPage tabPoligonos;
+        private System.Windows.Forms.TabPage tabOvais;
+        private System.Windows.Forms.RadioButton radioDDA;
+        private System.Windows.Forms.RadioButton radioGeneralEquation;
+        private System.Windows.Forms.RadioButton radioMidpoint;
         private System.Windows.Forms.Button buttonLimparImg;
-        private System.Windows.Forms.ComboBox comboBoxAlgoritmos;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel1;
     }
 }
