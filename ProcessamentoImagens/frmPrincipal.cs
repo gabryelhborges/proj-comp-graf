@@ -5,32 +5,14 @@ using System.Windows.Forms;
 
 namespace ProcessamentoImagens
 {
+    
     public partial class frmPrincipal : Form
     {
         private Bitmap canvas;
-        private bool flag = true;
-        private int x1, y1, x2, y2;
         private Point shadowEnd;
-        private List<Polygon> polygons = new List<Polygon>();
-        private Polygon currentPolygon = null;
-        private int selectedPolygonIndex = -1;
-
-
-        public class Polygon
-        {
-            public List<Point> OriginalVertices { get; set; }
-            public List<Point> CurrentVertices { get; set; }
-            public double[,] TransformationMatrix { get; set; }
-            public Color Color { get; set; }
-
-            public Polygon()
-            {
-                OriginalVertices = new List<Point>();
-                CurrentVertices = new List<Point>();
-                TransformationMatrix = new double[3, 3] { { 1, 0, 0 }, { 0, 1, 0 }, { 0, 0, 1 } };
-                Color = Color.Black;
-            }
-        }
+        public List<Poligono> listaPol = new List<Poligono>();
+        private List<Point> pontos = new List<Point>(); // Armazenar os pontos
+        private Poligono poligonoAtual;
 
         public frmPrincipal()
         {
@@ -38,11 +20,11 @@ namespace ProcessamentoImagens
             this.WindowState = FormWindowState.Maximized;
 
             // Habilitar Double Buffering usando reflexão
-            panel1.GetType().InvokeMember(
+            panel.GetType().InvokeMember(
                 "DoubleBuffered",
                 System.Reflection.BindingFlags.SetProperty | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic,
                 null,
-                panel1,
+                panel,
                 new object[] { true }
             );
 
@@ -54,10 +36,16 @@ namespace ProcessamentoImagens
             this.Resize += frmPrincipal_Resize;
         }
 
+        private void frmPrincipal_Resize(object sender, EventArgs e)
+        {
+            UpdateCanvasSize();
+            ClearCanvas();
+        }
+
         private void UpdateCanvasSize()
         {
             if (canvas != null) canvas.Dispose(); // Liberar o recurso anterior
-            canvas = new Bitmap(panel1.Width, panel1.Height);
+            canvas = new Bitmap(panel.Width, panel.Height);
         }
 
         private void ClearCanvas()
@@ -66,73 +54,109 @@ namespace ProcessamentoImagens
             {
                 g.Clear(Color.White);
             }
-            panel1.Invalidate();
+            panel.Invalidate();
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             ClearCanvas();
-            flag = true;
+            listaPol.Clear();
+            pontos.Clear();  // Limpar a lista de pontos
         }
 
-        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        private void panel_MouseMove(object sender, MouseEventArgs e)
         {
-            if (!flag)
+            // Atualiza a posição da sombra enquanto o mouse se move
+            if (pontos.Count > 0)
             {
                 shadowEnd = new Point(e.X, e.Y);
-                panel1.Invalidate();
+                panel.Invalidate(); // Solicita a atualização do painel
             }
         }
 
-        private void panel1_MouseClick(object sender, MouseEventArgs e)
+        private void panel_MouseClick(object sender, MouseEventArgs e)
         {
-            if (flag)
+            if (e.Button == MouseButtons.Right && pontos.Count > 1)
             {
-                x1 = e.X;
-                y1 = e.Y;
-                //Console.WriteLine("Primeiro click: Coord -> X = " + x1 + " Y = " + y1);
+                if (poligonoAtual != null)
+                {
+                    listaPol.Add(poligonoAtual);
+                    using (Graphics g = Graphics.FromImage(canvas))
+                    using (Pen pen = new Pen(poligonoAtual.Cor))
+                    {
+                        DrawLine(g, canvas, pontos[pontos.Count - 1].X, pontos[pontos.Count - 1].Y,
+                                 pontos[0].X, pontos[0].Y, pen);
+                    }
+                    pontos.Clear();
+                    shadowEnd = Point.Empty;
+                    poligonoAtual = null;
+                }
             }
             else
             {
-                x2 = e.X;
-                y2 = e.Y;
-                //Console.WriteLine("Segundo click: Coord -> X = " + x2 + " Y = " + y2);
-
-                using (Graphics g = Graphics.FromImage(canvas))
+                if (poligonoAtual == null)
                 {
-                    if (radioDDA.Checked)
-                        DrawLineDDA(g, canvas, x1, y1, x2, y2, new Pen(Color.Red));
-                    else if (radioGeneralEquation.Checked)
-                        DrawLineGeneralEquation(g, canvas, x1, y1, x2, y2, new Pen(Color.Blue));
-                    else if (radioMidpoint.Checked)
-                        DrawLineMidpoint(g, canvas, x1, y1, x2, y2, new Pen(Color.Green));
+                    poligonoAtual = new Poligono();
                 }
-                panel1.Invalidate();
+
+                pontos.Add(new Point(e.X, e.Y));
+                poligonoAtual.VerticesOriginais = new List<Point>(pontos);
+                poligonoAtual.VerticesAtuais = new List<Point>(pontos);
+                shadowEnd = new Point(e.X, e.Y);
             }
-            flag = !flag;
+            panel.Invalidate();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void panel_Paint(object sender, PaintEventArgs e)
         {
+            // Desenhar a imagem do canvas (polígonos anteriores)
             e.Graphics.DrawImage(canvas, 0, 0);
-            if (!flag && shadowEnd != Point.Empty)
+
+            // Desenhar os polígonos existentes
+            foreach (var poligono in listaPol)
             {
-                using (Pen shadowPen = new Pen(Color.Gray, 1))
+                for (int i = 1; i < poligono.VerticesAtuais.Count; i++)
                 {
-                    if (radioDDA.Checked)
-                        DrawLineDDA(e.Graphics, canvas, x1, y1, shadowEnd.X, shadowEnd.Y, shadowPen);
-                    else if (radioGeneralEquation.Checked)
-                        DrawLineGeneralEquation(e.Graphics, canvas, x1, y1, shadowEnd.X, shadowEnd.Y, shadowPen);
-                    else if (radioMidpoint.Checked)
-                        DrawLineMidpoint(e.Graphics, canvas, x1, y1, shadowEnd.X, shadowEnd.Y, shadowPen);
+                    using (Pen pen = new Pen(poligono.Cor))
+                    {
+                        DrawLine(e.Graphics, canvas, poligono.VerticesAtuais[i - 1].X, poligono.VerticesAtuais[i - 1].Y,
+                                 poligono.VerticesAtuais[i].X, poligono.VerticesAtuais[i].Y, pen);
+                    }
+                }
+            }
+
+            // Desenhar o polígono atual (em andamento)
+            if (poligonoAtual != null && pontos.Count > 0)
+            {
+                for (int i = 1; i < pontos.Count; i++)
+                {
+                    using (Pen pen = new Pen(Color.Gray))
+                    {
+                        DrawLine(e.Graphics, canvas, pontos[i - 1].X, pontos[i - 1].Y,
+                                 pontos[i].X, pontos[i].Y, pen);
+                    }
+                }
+
+                // Desenhar a sombra (linha do último ponto até a posição do mouse)
+                if (shadowEnd != Point.Empty && pontos.Count > 0)
+                {
+                    using (Pen pen = new Pen(Color.Gray))
+                    {
+                        DrawLine(e.Graphics, canvas, pontos[pontos.Count - 1].X, pontos[pontos.Count - 1].Y,
+                                 shadowEnd.X, shadowEnd.Y, pen);
+                    }
                 }
             }
         }
 
-        private void frmPrincipal_Resize(object sender, EventArgs e)
+        private void DrawLine(Graphics g, Bitmap bmp, int x1, int y1, int x2, int y2, Pen pen)
         {
-            UpdateCanvasSize();
-            ClearCanvas();
+            if (radioDDA?.Checked == true)
+                DrawLineDDA(g, bmp, x1, y1, x2, y2, pen);
+            else if (radioGeneralEquation?.Checked == true)
+                DrawLineGeneralEquation(g, bmp, x1, y1, x2, y2, pen);
+            else if (radioMidpoint?.Checked == true)
+                DrawLineMidpoint(g, bmp, x1, y1, x2, y2, pen);
         }
 
         private void DrawLineDDA(Graphics g, Bitmap bmp, int x1, int y1, int x2, int y2, Pen pen)

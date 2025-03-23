@@ -11,9 +11,9 @@ C:\Users\Gabryel Borges\Downloads\proj-comp-graf\ProcessamentoImagens\bin\Debug\
 C:\Users\Gabryel Borges\Downloads\proj-comp-graf\ProcessamentoImagens\bin\Debug\ProcessamentoImagens.exe
 C:\Users\Gabryel Borges\Downloads\proj-comp-graf\ProcessamentoImagens\bin\Debug\ProcessamentoImagens.pdb
 C:\Users\Gabryel Borges\Downloads\proj-comp-graf\ProcessamentoImagens\obj\Debug\ProcessamentoImagens.csproj.AssemblyReference.cache
-C:\Users\Gabryel Borges\Downloads\proj-comp-graf\ProcessamentoImagens\obj\Debug\ProcessamentoImagens.frmPrincipal.resources
 C:\Users\Gabryel Borges\Downloads\proj-comp-graf\ProcessamentoImagens\obj\Debug\ProcessamentoImagens.Properties.Resources.resources
 C:\Users\Gabryel Borges\Downloads\proj-comp-graf\ProcessamentoImagens\obj\Debug\ProcessamentoImagens.csproj.GenerateResource.cache
 C:\Users\Gabryel Borges\Downloads\proj-comp-graf\ProcessamentoImagens\obj\Debug\ProcessamentoImagens.csproj.CoreCompileInputs.cache
 C:\Users\Gabryel Borges\Downloads\proj-comp-graf\ProcessamentoImagens\obj\Debug\ProcessamentoImagens.exe
 C:\Users\Gabryel Borges\Downloads\proj-comp-graf\ProcessamentoImagens\obj\Debug\ProcessamentoImagens.pdb
+C:\Users\Gabryel Borges\Downloads\proj-comp-graf\ProcessamentoImagens\obj\Debug\ProcessamentoImagens.frmPrincipal.resources
