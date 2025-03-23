@@ -2,24 +2,24 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ProcessamentoImagens
 {
-    
     public partial class frmPrincipal : Form
     {
         private Bitmap canvas;
         private Point shadowEnd;
         public List<Poligono> listaPol = new List<Poligono>();
-        private List<Point> pontos = new List<Point>(); // Armazenar os pontos
+        private List<Point> pontos = new List<Point>();
         private Poligono poligonoAtual;
+        private Poligono poligonoSelecionado = null;
 
         public frmPrincipal()
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
 
-            // Habilitar Double Buffering usando reflexão
             panel.GetType().InvokeMember(
                 "DoubleBuffered",
                 System.Reflection.BindingFlags.SetProperty | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic,
@@ -28,12 +28,18 @@ namespace ProcessamentoImagens
                 new object[] { true }
             );
 
-            // Inicializar canvas com o tamanho atual do panel1
             UpdateCanvasSize();
             ClearCanvas();
 
-            // Associar o evento de redimensionamento
             this.Resize += frmPrincipal_Resize;
+            listBoxPoligonos.SelectionMode = SelectionMode.One;
+
+            dataGridViewPontos.Columns.Add("Numero", "Ponto");
+            dataGridViewPontos.Columns.Add("X", "X");
+            dataGridViewPontos.Columns.Add("Y", "Y");
+            dataGridViewPontos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+            comboBoxReflexao.SelectedIndex = 0;
         }
 
         private void frmPrincipal_Resize(object sender, EventArgs e)
@@ -44,7 +50,7 @@ namespace ProcessamentoImagens
 
         private void UpdateCanvasSize()
         {
-            if (canvas != null) canvas.Dispose(); // Liberar o recurso anterior
+            if (canvas != null) canvas.Dispose();
             canvas = new Bitmap(panel.Width, panel.Height);
         }
 
@@ -61,16 +67,85 @@ namespace ProcessamentoImagens
         {
             ClearCanvas();
             listaPol.Clear();
-            pontos.Clear();  // Limpar a lista de pontos
+            pontos.Clear();
+            listBoxPoligonos.Items.Clear();
+            dataGridViewPontos.Rows.Clear();
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if (listBoxPoligonos.SelectedItem != null)
+            {
+                ListBoxItem itemSelecionado = (ListBoxItem)listBoxPoligonos.SelectedItem;
+                Poligono poligonoExcluido = itemSelecionado.Poligono;
+
+                if (poligonoExcluido == poligonoSelecionado)
+                {
+                    poligonoExcluido.Cor = Color.Black;
+                    poligonoSelecionado = null;
+                }
+
+                listaPol.Remove(poligonoExcluido);
+                listBoxPoligonos.Items.Remove(itemSelecionado);
+
+                RedrawCanvas();
+                dataGridViewPontos.Rows.Clear();
+            }
+        }
+
+        private void listBoxPoligonos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (poligonoSelecionado != null)
+            {
+                poligonoSelecionado.Cor = Color.Black;
+            }
+
+            dataGridViewPontos.Rows.Clear();
+
+            if (listBoxPoligonos.SelectedItem != null)
+            {
+                ListBoxItem itemSelecionado = (ListBoxItem)listBoxPoligonos.SelectedItem;
+                poligonoSelecionado = itemSelecionado.Poligono;
+                poligonoSelecionado.Cor = Color.Blue;
+
+                for (int i = 0; i < poligonoSelecionado.VerticesAtuais.Count; i++)
+                {
+                    Point ponto = poligonoSelecionado.VerticesAtuais[i];
+                    dataGridViewPontos.Rows.Add($"Ponto {i + 1}", ponto.X, ponto.Y);
+                }
+            }
+            else
+            {
+                poligonoSelecionado = null;
+            }
+
+            RedrawCanvas();
+        }
+
+        private void RedrawCanvas()
+        {
+            ClearCanvas();
+            foreach (var poligono in listaPol)
+            {
+                using (Graphics g = Graphics.FromImage(canvas))
+                using (Pen pen = new Pen(poligono.Cor))
+                {
+                    for (int i = 1; i < poligono.VerticesAtuais.Count; i++)
+                    {
+                        DrawLine(g, canvas, poligono.VerticesAtuais[i - 1].X, poligono.VerticesAtuais[i - 1].Y,
+                                 poligono.VerticesAtuais[i].X, poligono.VerticesAtuais[i].Y, pen);
+                    }
+                }
+            }
+            panel.Invalidate();
         }
 
         private void panel_MouseMove(object sender, MouseEventArgs e)
         {
-            // Atualiza a posição da sombra enquanto o mouse se move
             if (pontos.Count > 0)
             {
                 shadowEnd = new Point(e.X, e.Y);
-                panel.Invalidate(); // Solicita a atualização do painel
+                panel.Invalidate();
             }
         }
 
@@ -80,13 +155,25 @@ namespace ProcessamentoImagens
             {
                 if (poligonoAtual != null)
                 {
+                    pontos.Add(pontos[0]);
+                    poligonoAtual.VerticesOriginais = new List<Point>(pontos);
+                    poligonoAtual.VerticesAtuais = new List<Point>(pontos);
+                    poligonoAtual.CalcularCentro();
+
                     listaPol.Add(poligonoAtual);
                     using (Graphics g = Graphics.FromImage(canvas))
                     using (Pen pen = new Pen(poligonoAtual.Cor))
                     {
-                        DrawLine(g, canvas, pontos[pontos.Count - 1].X, pontos[pontos.Count - 1].Y,
-                                 pontos[0].X, pontos[0].Y, pen);
+                        for (int i = 1; i < pontos.Count; i++)
+                        {
+                            DrawLine(g, canvas, pontos[i - 1].X, pontos[i - 1].Y,
+                                     pontos[i].X, pontos[i].Y, pen);
+                        }
                     }
+
+                    string nomePoligono = $"Polígono {listaPol.Count}";
+                    listBoxPoligonos.Items.Add(new ListBoxItem(nomePoligono, poligonoAtual));
+
                     pontos.Clear();
                     shadowEnd = Point.Empty;
                     poligonoAtual = null;
@@ -109,15 +196,13 @@ namespace ProcessamentoImagens
 
         private void panel_Paint(object sender, PaintEventArgs e)
         {
-            // Desenhar a imagem do canvas (polígonos anteriores)
             e.Graphics.DrawImage(canvas, 0, 0);
 
-            // Desenhar os polígonos existentes
             foreach (var poligono in listaPol)
             {
-                for (int i = 1; i < poligono.VerticesAtuais.Count; i++)
+                using (Pen pen = new Pen(poligono.Cor))
                 {
-                    using (Pen pen = new Pen(poligono.Cor))
+                    for (int i = 1; i < poligono.VerticesAtuais.Count; i++)
                     {
                         DrawLine(e.Graphics, canvas, poligono.VerticesAtuais[i - 1].X, poligono.VerticesAtuais[i - 1].Y,
                                  poligono.VerticesAtuais[i].X, poligono.VerticesAtuais[i].Y, pen);
@@ -125,7 +210,6 @@ namespace ProcessamentoImagens
                 }
             }
 
-            // Desenhar o polígono atual (em andamento)
             if (poligonoAtual != null && pontos.Count > 0)
             {
                 for (int i = 1; i < pontos.Count; i++)
@@ -137,7 +221,6 @@ namespace ProcessamentoImagens
                     }
                 }
 
-                // Desenhar a sombra (linha do último ponto até a posição do mouse)
                 if (shadowEnd != Point.Empty && pontos.Count > 0)
                 {
                     using (Pen pen = new Pen(Color.Gray))
@@ -254,6 +337,180 @@ namespace ProcessamentoImagens
                 {
                     err += dx;
                     y += sy;
+                }
+            }
+        }
+
+        // Métodos Auxiliares para Transformações com Matrizes
+        private double[,] MultiplicarMatrizes(double[,] a, double[,] b)
+        {
+            double[,] resultado = new double[3, 3];
+            for (int i = 0; i < 3; i++)
+                for (int j = 0; j < 3; j++)
+                    for (int k = 0; k < 3; k++)
+                        resultado[i, j] += a[i, k] * b[k, j];
+            return resultado;
+        }
+
+        private double[] MultiplicarMatrizVetor(double[,] matriz, double[] vetor)
+        {
+            double[] resultado = new double[3];
+            for (int i = 0; i < 3; i++)
+                for (int j = 0; j < 3; j++)
+                    resultado[i] += matriz[i, j] * vetor[j];
+            return resultado;
+        }
+
+        private void AplicarTransformacao(Poligono poligono)
+        {
+            for (int i = 0; i < poligono.VerticesOriginais.Count; i++)
+            {
+                double[] ponto = new double[] { poligono.VerticesOriginais[i].X, poligono.VerticesOriginais[i].Y, 1 };
+                double[] resultado = MultiplicarMatrizVetor(poligono.MatTransformacao, ponto);
+                poligono.VerticesAtuais[i] = new Point((int)resultado[0], (int)resultado[1]);
+            }
+        }
+
+        private void bttAplicaTranslacao_Click(object sender, EventArgs e)
+        {
+            if (poligonoSelecionado != null)
+            {
+                int dx = (int)numTranslacaoX.Value;
+                int dy = (int)numTranslacaoY.Value;
+
+                double[,] matrizTranslacao = new double[3, 3] {
+                    { 1, 0, dx },
+                    { 0, 1, dy },
+                    { 0, 0, 1 }
+                };
+
+                poligonoSelecionado.MatTransformacao = MultiplicarMatrizes(matrizTranslacao, poligonoSelecionado.MatTransformacao);
+                AplicarTransformacao(poligonoSelecionado);
+
+                RedrawCanvas();
+                UpdateDataGridView();
+            }
+        }
+
+        private void bttAplicaEscala_Click(object sender, EventArgs e)
+        {
+            if (poligonoSelecionado != null)
+            {
+                float sx = (float)numEscalaX.Value;
+                float sy = (float)numEscalaY.Value;
+
+                double[,] translacaoParaOrigem = new double[3, 3] { { 1, 0, -poligonoSelecionado.Centro.X }, { 0, 1, -poligonoSelecionado.Centro.Y }, { 0, 0, 1 } };
+                double[,] escala = new double[3, 3] { { sx, 0, 0 }, { 0, sy, 0 }, { 0, 0, 1 } };
+                double[,] translacaoDeVolta = new double[3, 3] { { 1, 0, poligonoSelecionado.Centro.X }, { 0, 1, poligonoSelecionado.Centro.Y }, { 0, 0, 1 } };
+
+                var temp = MultiplicarMatrizes(escala, translacaoParaOrigem); // Ordem ajustada
+                var matrizFinal = MultiplicarMatrizes(translacaoDeVolta, temp);
+                poligonoSelecionado.MatTransformacao = MultiplicarMatrizes(matrizFinal, poligonoSelecionado.MatTransformacao);
+
+                AplicarTransformacao(poligonoSelecionado);
+
+                RedrawCanvas();
+                UpdateDataGridView();
+            }
+        }
+
+        private void bttRotacionar_Click(object sender, EventArgs e)
+        {
+            if (poligonoSelecionado != null)
+            {
+                float anguloGraus = (float)numRotacionar.Value;
+                float anguloRad = anguloGraus * (float)Math.PI / 180f;
+
+                double[,] translacaoParaOrigem = new double[3, 3] { { 1, 0, -poligonoSelecionado.Centro.X }, { 0, 1, -poligonoSelecionado.Centro.Y }, { 0, 0, 1 } };
+                double[,] rotacao = new double[3, 3] {
+                    { Math.Cos(anguloRad), -Math.Sin(anguloRad), 0 },
+                    { Math.Sin(anguloRad), Math.Cos(anguloRad), 0 },
+                    { 0, 0, 1 }
+                };
+                double[,] translacaoDeVolta = new double[3, 3] { { 1, 0, poligonoSelecionado.Centro.X }, { 0, 1, poligonoSelecionado.Centro.Y }, { 0, 0, 1 } };
+
+                var temp = MultiplicarMatrizes(rotacao, translacaoParaOrigem); // Ordem ajustada
+                var matrizFinal = MultiplicarMatrizes(translacaoDeVolta, temp);
+                poligonoSelecionado.MatTransformacao = MultiplicarMatrizes(matrizFinal, poligonoSelecionado.MatTransformacao);
+
+                AplicarTransformacao(poligonoSelecionado);
+
+                RedrawCanvas();
+                UpdateDataGridView();
+            }
+        }
+
+        private void bttReflexao_Click(object sender, EventArgs e)
+        {
+            if (poligonoSelecionado != null)
+            {
+                string tipoReflexao = comboBoxReflexao.SelectedItem?.ToString();
+                double[,] matrizReflexao = new double[3, 3];
+
+                switch (tipoReflexao)
+                {
+                    case "Eixo X":
+                        matrizReflexao = new double[3, 3] { { 1, 0, 0 }, { 0, -1, 0 }, { 0, 0, 1 } };
+                        break;
+                    case "Eixo Y":
+                        matrizReflexao = new double[3, 3] { { -1, 0, 0 }, { 0, 1, 0 }, { 0, 0, 1 } };
+                        break;
+                    case "Ambos":
+                        matrizReflexao = new double[3, 3] { { -1, 0, 0 }, { 0, -1, 0 }, { 0, 0, 1 } };
+                        break;
+                    default:
+                        return;
+                }
+
+                double[,] translacaoParaOrigem = new double[3, 3] { { 1, 0, -poligonoSelecionado.Centro.X }, { 0, 1, -poligonoSelecionado.Centro.Y }, { 0, 0, 1 } };
+                double[,] translacaoDeVolta = new double[3, 3] { { 1, 0, poligonoSelecionado.Centro.X }, { 0, 1, poligonoSelecionado.Centro.Y }, { 0, 0, 1 } };
+
+                var temp = MultiplicarMatrizes(matrizReflexao, translacaoParaOrigem); // Ordem ajustada
+                var matrizFinal = MultiplicarMatrizes(translacaoDeVolta, temp);
+                poligonoSelecionado.MatTransformacao = MultiplicarMatrizes(matrizFinal, poligonoSelecionado.MatTransformacao);
+
+                AplicarTransformacao(poligonoSelecionado);
+
+                RedrawCanvas();
+                UpdateDataGridView();
+            }
+        }
+
+        private void bttCisalhamento_Click(object sender, EventArgs e)
+        {
+            if (poligonoSelecionado != null)
+            {
+                float shearX = (float)numCisalhamentoX.Value;
+                float shearY = (float)numCisalhamentoY.Value;
+
+                double[,] translacaoParaOrigem = new double[3, 3] { { 1, 0, -poligonoSelecionado.Centro.X }, { 0, 1, -poligonoSelecionado.Centro.Y }, { 0, 0, 1 } };
+                double[,] cisalhamento = new double[3, 3] {
+                    { 1, shearX, 0 },
+                    { shearY, 1, 0 },
+                    { 0, 0, 1 }
+                };
+                double[,] translacaoDeVolta = new double[3, 3] { { 1, 0, poligonoSelecionado.Centro.X }, { 0, 1, poligonoSelecionado.Centro.Y }, { 0, 0, 1 } };
+
+                var temp = MultiplicarMatrizes(cisalhamento, translacaoParaOrigem); // Ordem ajustada
+                var matrizFinal = MultiplicarMatrizes(translacaoDeVolta, temp);
+                poligonoSelecionado.MatTransformacao = MultiplicarMatrizes(matrizFinal, poligonoSelecionado.MatTransformacao);
+
+                AplicarTransformacao(poligonoSelecionado);
+
+                RedrawCanvas();
+                UpdateDataGridView();
+            }
+        }
+
+        private void UpdateDataGridView()
+        {
+            dataGridViewPontos.Rows.Clear();
+            if (poligonoSelecionado != null)
+            {
+                for (int i = 0; i < poligonoSelecionado.VerticesAtuais.Count; i++)
+                {
+                    Point ponto = poligonoSelecionado.VerticesAtuais[i];
+                    dataGridViewPontos.Rows.Add($"Ponto {i + 1}", ponto.X, ponto.Y);
                 }
             }
         }
