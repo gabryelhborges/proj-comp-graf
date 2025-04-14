@@ -14,6 +14,10 @@ namespace ProcessamentoImagens
         private List<Point> pontos = new List<Point>();
         private Poligono poligonoAtual;
         private Poligono poligonoSelecionado = null;
+        private Color fillColor = Color.Red; // ou qualquer cor padrão
+
+        private enum FillMethod { None, FloodFill, ScanLine }
+        private FillMethod currentFillMethod = FillMethod.None;
 
         public frmPrincipal()
         {
@@ -179,18 +183,39 @@ namespace ProcessamentoImagens
                     poligonoAtual = null;
                 }
             }
-            else
+            else if (e.Button == MouseButtons.Left)
             {
-                if (poligonoAtual == null)
+                // Se não está desenhando polígono e o modo de preenchimento está ativo
+                if (poligonoAtual == null && currentFillMethod != FillMethod.None)
                 {
-                    poligonoAtual = new Poligono();
-                }
+                    Color corAlvo = canvas.GetPixel(e.X, e.Y);
+                    if (corAlvo.ToArgb() == fillColor.ToArgb())
+                        return;
 
-                pontos.Add(new Point(e.X, e.Y));
-                poligonoAtual.VerticesOriginais = new List<Point>(pontos);
-                poligonoAtual.VerticesAtuais = new List<Point>(pontos);
-                shadowEnd = new Point(e.X, e.Y);
+                    switch (currentFillMethod)
+                    {
+                        case FillMethod.FloodFill:
+                            Preenchimento.FloodFill(canvas, e.X, e.Y, corAlvo, fillColor);
+                            break;
+                        case FillMethod.ScanLine:
+                            Preenchimento.ScanLineFill(canvas, e.X, e.Y, corAlvo, fillColor);
+                            break;
+                    }
+
+                    panel.Invalidate();
+                }
+                else // comportamento padrão: adicionar ponto no polígono
+                {
+                    if (poligonoAtual == null)
+                        poligonoAtual = new Poligono();
+
+                    pontos.Add(new Point(e.X, e.Y));
+                    poligonoAtual.VerticesOriginais = new List<Point>(pontos);
+                    poligonoAtual.VerticesAtuais = new List<Point>(pontos);
+                    shadowEnd = new Point(e.X, e.Y);
+                }
             }
+
             panel.Invalidate();
         }
 
@@ -513,6 +538,44 @@ namespace ProcessamentoImagens
                     dataGridViewPontos.Rows.Add($"Ponto {i + 1}", ponto.X, ponto.Y);
                 }
             }
+        }
+
+
+        private void button4_Click(object sender, EventArgs e) // scanline
+        {
+            currentFillMethod = FillMethod.ScanLine;
+            MessageBox.Show("Modo ScanLine selecionado. Agora clique na imagem.");
+        }
+
+        private void FloodFill_Click(object sender, EventArgs e)
+        {
+            currentFillMethod = FillMethod.FloodFill;
+            MessageBox.Show("Modo FloodFill selecionado. Agora clique na imagem.");
+        }
+
+        private void Vermelho_Click(object sender, EventArgs e)
+        {
+            fillColor = Color.Red;
+        }
+
+        private void Azul_Click(object sender, EventArgs e)
+        {
+            fillColor = Color.Blue;
+        }
+
+        private void Verde_Click(object sender, EventArgs e)
+        {
+            fillColor = Color.Green;
+        }
+
+        private void Amarelo_Click(object sender, EventArgs e)
+        {
+            fillColor = Color.Yellow;
+        }
+
+        private void Roxo_Click(object sender, EventArgs e)
+        {
+            fillColor = Color.Purple;
         }
     }
 }

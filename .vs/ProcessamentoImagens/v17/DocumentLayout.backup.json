@@ -1,21 +1,21 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Gabryel Borges\\Downloads\\proj-comp-graf\\",
+  "WorkspaceRootPath": "C:\\Users\\Leon\\Desktop\\ProjetosGithub\\proj-comp-graf\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\ProcessamentoImagens.csproj|c:\\users\\gabryel borges\\downloads\\proj-comp-graf\\processamentoimagens\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\ProcessamentoImagens.csproj|c:\\users\\leon\\desktop\\projetosgithub\\proj-comp-graf\\processamentoimagens\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\ProcessamentoImagens.csproj|solutionrelative:processamentoimagens\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\ProcessamentoImagens.csproj|C:\\Users\\Gabryel Borges\\Downloads\\proj-comp-graf\\processamentoimagens\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\ProcessamentoImagens.csproj|c:\\users\\leon\\desktop\\projetosgithub\\proj-comp-graf\\processamentoimagens\\preenchimento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\ProcessamentoImagens.csproj|solutionrelative:processamentoimagens\\preenchimento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\ProcessamentoImagens.csproj|C:\\Users\\Leon\\Desktop\\ProjetosGithub\\proj-comp-graf\\processamentoimagens\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\ProcessamentoImagens.csproj|solutionrelative:processamentoimagens\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\ProcessamentoImagens.csproj|C:\\Users\\Gabryel Borges\\Downloads\\proj-comp-graf\\processamentoimagens\\frmprincipal.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\ProcessamentoImagens.csproj|solutionrelative:processamentoimagens\\frmprincipal.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\ProcessamentoImagens.csproj|C:\\Users\\Gabryel Borges\\Downloads\\proj-comp-graf\\processamentoimagens\\poligono.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\ProcessamentoImagens.csproj|C:\\Users\\Leon\\Desktop\\ProjetosGithub\\proj-comp-graf\\processamentoimagens\\poligono.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\ProcessamentoImagens.csproj|solutionrelative:processamentoimagens\\poligono.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -25,59 +25,69 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
+          "DockedWidth": 326,
           "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "frmPrincipal.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Gabryel Borges\\Downloads\\proj-comp-graf\\ProcessamentoImagens\\frmPrincipal.cs",
+              "Title": "Preenchimento.cs",
+              "DocumentMoniker": "C:\\Users\\Leon\\Desktop\\ProjetosGithub\\proj-comp-graf\\ProcessamentoImagens\\Preenchimento.cs",
+              "RelativeDocumentMoniker": "ProcessamentoImagens\\Preenchimento.cs",
+              "ToolTip": "C:\\Users\\Leon\\Desktop\\ProjetosGithub\\proj-comp-graf\\ProcessamentoImagens\\Preenchimento.cs",
+              "RelativeToolTip": "ProcessamentoImagens\\Preenchimento.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-14T03:18:26.751Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "frmPrincipal.cs",
+              "DocumentMoniker": "C:\\Users\\Leon\\Desktop\\ProjetosGithub\\proj-comp-graf\\ProcessamentoImagens\\frmPrincipal.cs",
               "RelativeDocumentMoniker": "ProcessamentoImagens\\frmPrincipal.cs",
-              "ToolTip": "C:\\Users\\Gabryel Borges\\Downloads\\proj-comp-graf\\ProcessamentoImagens\\frmPrincipal.cs [Design]*",
-              "RelativeToolTip": "ProcessamentoImagens\\frmPrincipal.cs [Design]*",
+              "ToolTip": "C:\\Users\\Leon\\Desktop\\ProjetosGithub\\proj-comp-graf\\ProcessamentoImagens\\frmPrincipal.cs",
+              "RelativeToolTip": "ProcessamentoImagens\\frmPrincipal.cs",
+              "ViewState": "AgIAACECAAAAAAAAAAAkwEECAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-14T02:58:39.527Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "frmPrincipal.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Leon\\Desktop\\ProjetosGithub\\proj-comp-graf\\ProcessamentoImagens\\frmPrincipal.cs",
+              "RelativeDocumentMoniker": "ProcessamentoImagens\\frmPrincipal.cs",
+              "ToolTip": "C:\\Users\\Leon\\Desktop\\ProjetosGithub\\proj-comp-graf\\ProcessamentoImagens\\frmPrincipal.cs [Design]",
+              "RelativeToolTip": "ProcessamentoImagens\\frmPrincipal.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-08T19:51:59.421Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "frmPrincipal.cs",
-              "DocumentMoniker": "C:\\Users\\Gabryel Borges\\Downloads\\proj-comp-graf\\ProcessamentoImagens\\frmPrincipal.cs",
-              "RelativeDocumentMoniker": "ProcessamentoImagens\\frmPrincipal.cs",
-              "ToolTip": "C:\\Users\\Gabryel Borges\\Downloads\\proj-comp-graf\\ProcessamentoImagens\\frmPrincipal.cs*",
-              "RelativeToolTip": "ProcessamentoImagens\\frmPrincipal.cs*",
-              "ViewState": "AgIAAK4BAAAAAAAAAAAEwMkBAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-08T19:51:38.299Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "frmPrincipal.designer.cs",
-              "DocumentMoniker": "C:\\Users\\Gabryel Borges\\Downloads\\proj-comp-graf\\ProcessamentoImagens\\frmPrincipal.designer.cs",
-              "RelativeDocumentMoniker": "ProcessamentoImagens\\frmPrincipal.designer.cs",
-              "ToolTip": "C:\\Users\\Gabryel Borges\\Downloads\\proj-comp-graf\\ProcessamentoImagens\\frmPrincipal.designer.cs*",
-              "RelativeToolTip": "ProcessamentoImagens\\frmPrincipal.designer.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-16T19:21:57.141Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
               "Title": "Poligono.cs",
-              "DocumentMoniker": "C:\\Users\\Gabryel Borges\\Downloads\\proj-comp-graf\\ProcessamentoImagens\\Poligono.cs",
+              "DocumentMoniker": "C:\\Users\\Leon\\Desktop\\ProjetosGithub\\proj-comp-graf\\ProcessamentoImagens\\Poligono.cs",
               "RelativeDocumentMoniker": "ProcessamentoImagens\\Poligono.cs",
-              "ToolTip": "C:\\Users\\Gabryel Borges\\Downloads\\proj-comp-graf\\ProcessamentoImagens\\Poligono.cs",
-              "RelativeToolTip": "ProcessamentoImagens\\Poligono.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA3AAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Leon\\Desktop\\ProjetosGithub\\proj-comp-graf\\ProcessamentoImagens\\Poligono.cs*",
+              "RelativeToolTip": "ProcessamentoImagens\\Poligono.cs*",
+              "ViewState": "AgIAACIAAAAAAAAAAAAAACUAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-23T16:49:21.669Z",
               "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             }
           ]
         }

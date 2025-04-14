@@ -15,6 +15,7 @@ namespace ProcessamentoImagens
         public double[,] MatTransformacao { get; set; }
         public Color Cor { get; set; }
         public PointF Centro { get; set; }
+        public string NomeCor { get; set; }
 
         public Poligono()
         {
