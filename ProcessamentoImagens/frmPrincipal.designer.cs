@@ -25,6 +25,23 @@
             this.radioMidpoint = new System.Windows.Forms.RadioButton();
             this.buttonLimparImg = new System.Windows.Forms.Button();
             this.tabPoligonos = new System.Windows.Forms.TabPage();
+            this.label6 = new System.Windows.Forms.Label();
+            this.numCisalhamentoX = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.bttCisalhamento = new System.Windows.Forms.Button();
+            this.numCisalhamentoY = new System.Windows.Forms.NumericUpDown();
+            this.bttReflexao = new System.Windows.Forms.Button();
+            this.comboBoxReflexao = new System.Windows.Forms.ComboBox();
+            this.bttRotacionar = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.numRotacionar = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.numEscalaX = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.numEscalaY = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.numTranslacaoX = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.bttAplicaTranslacao = new System.Windows.Forms.Button();
             this.numTranslacaoY = new System.Windows.Forms.NumericUpDown();
@@ -32,35 +49,27 @@
             this.button1 = new System.Windows.Forms.Button();
             this.listBoxPoligonos = new System.Windows.Forms.ListBox();
             this.tabOvais = new System.Windows.Forms.TabPage();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.ScanLine = new System.Windows.Forms.Button();
+            this.FloodFill = new System.Windows.Forms.Button();
             this.panel = new System.Windows.Forms.Panel();
-            this.numTranslacaoX = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.numEscalaX = new System.Windows.Forms.NumericUpDown();
-            this.label4 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.numEscalaY = new System.Windows.Forms.NumericUpDown();
-            this.numRotacionar = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
-            this.bttRotacionar = new System.Windows.Forms.Button();
-            this.comboBoxReflexao = new System.Windows.Forms.ComboBox();
-            this.bttReflexao = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.numCisalhamentoX = new System.Windows.Forms.NumericUpDown();
-            this.label7 = new System.Windows.Forms.Label();
-            this.bttCisalhamento = new System.Windows.Forms.Button();
-            this.numCisalhamentoY = new System.Windows.Forms.NumericUpDown();
+            this.Vermelho = new System.Windows.Forms.Button();
+            this.Azul = new System.Windows.Forms.Button();
+            this.Amarelo = new System.Windows.Forms.Button();
+            this.Verde = new System.Windows.Forms.Button();
+            this.Roxo = new System.Windows.Forms.Button();
             this.tabControlOpcoes.SuspendLayout();
             this.tabRetas.SuspendLayout();
             this.tabPoligonos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numTranslacaoY)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPontos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numTranslacaoX)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numEscalaX)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numEscalaY)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numRotacionar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCisalhamentoX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCisalhamentoY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numRotacionar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEscalaX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEscalaY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numTranslacaoX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numTranslacaoY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPontos)).BeginInit();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlOpcoes
@@ -68,6 +77,7 @@
             this.tabControlOpcoes.Controls.Add(this.tabRetas);
             this.tabControlOpcoes.Controls.Add(this.tabPoligonos);
             this.tabControlOpcoes.Controls.Add(this.tabOvais);
+            this.tabControlOpcoes.Controls.Add(this.tabPage1);
             this.tabControlOpcoes.Dock = System.Windows.Forms.DockStyle.Right;
             this.tabControlOpcoes.Location = new System.Drawing.Point(728, 0);
             this.tabControlOpcoes.Name = "tabControlOpcoes";
@@ -84,7 +94,7 @@
             this.tabRetas.Location = new System.Drawing.Point(4, 22);
             this.tabRetas.Name = "tabRetas";
             this.tabRetas.Padding = new System.Windows.Forms.Padding(3);
-            this.tabRetas.Size = new System.Drawing.Size(244, 508);
+            this.tabRetas.Size = new System.Drawing.Size(244, 612);
             this.tabRetas.TabIndex = 0;
             this.tabRetas.Text = "Retas";
             // 
@@ -159,243 +169,6 @@
             this.tabPoligonos.Size = new System.Drawing.Size(244, 612);
             this.tabPoligonos.TabIndex = 1;
             this.tabPoligonos.Text = "Polígonos";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(85, 376);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(14, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Y";
-            // 
-            // bttAplicaTranslacao
-            // 
-            this.bttAplicaTranslacao.Location = new System.Drawing.Point(127, 389);
-            this.bttAplicaTranslacao.Name = "bttAplicaTranslacao";
-            this.bttAplicaTranslacao.Size = new System.Drawing.Size(109, 20);
-            this.bttAplicaTranslacao.TabIndex = 5;
-            this.bttAplicaTranslacao.Text = "Translação";
-            this.bttAplicaTranslacao.UseVisualStyleBackColor = true;
-            this.bttAplicaTranslacao.Click += new System.EventHandler(this.bttAplicaTranslacao_Click);
-            // 
-            // numTranslacaoY
-            // 
-            this.numTranslacaoY.Location = new System.Drawing.Point(67, 389);
-            this.numTranslacaoY.Name = "numTranslacaoY";
-            this.numTranslacaoY.Size = new System.Drawing.Size(54, 20);
-            this.numTranslacaoY.TabIndex = 4;
-            this.numTranslacaoY.Value = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            // 
-            // dataGridViewPontos
-            // 
-            this.dataGridViewPontos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewPontos.Location = new System.Drawing.Point(7, 201);
-            this.dataGridViewPontos.Name = "dataGridViewPontos";
-            this.dataGridViewPontos.Size = new System.Drawing.Size(230, 172);
-            this.dataGridViewPontos.TabIndex = 2;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(139, 172);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Excluir Polígono";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.btnExcluir_Click);
-            // 
-            // listBoxPoligonos
-            // 
-            this.listBoxPoligonos.FormattingEnabled = true;
-            this.listBoxPoligonos.Location = new System.Drawing.Point(7, 6);
-            this.listBoxPoligonos.Name = "listBoxPoligonos";
-            this.listBoxPoligonos.Size = new System.Drawing.Size(230, 160);
-            this.listBoxPoligonos.TabIndex = 0;
-            this.listBoxPoligonos.SelectedIndexChanged += new System.EventHandler(this.listBoxPoligonos_SelectedIndexChanged);
-            // 
-            // tabOvais
-            // 
-            this.tabOvais.Location = new System.Drawing.Point(4, 22);
-            this.tabOvais.Name = "tabOvais";
-            this.tabOvais.Padding = new System.Windows.Forms.Padding(3);
-            this.tabOvais.Size = new System.Drawing.Size(244, 508);
-            this.tabOvais.TabIndex = 2;
-            this.tabOvais.Text = "Ovais";
-            // 
-            // panel
-            // 
-            this.panel.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel.Location = new System.Drawing.Point(0, 0);
-            this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(728, 638);
-            this.panel.TabIndex = 104;
-            this.panel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_Paint);
-            this.panel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_MouseClick);
-            this.panel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_MouseMove);
-            // 
-            // numTranslacaoX
-            // 
-            this.numTranslacaoX.Location = new System.Drawing.Point(7, 389);
-            this.numTranslacaoX.Name = "numTranslacaoX";
-            this.numTranslacaoX.Size = new System.Drawing.Size(54, 20);
-            this.numTranslacaoX.TabIndex = 8;
-            this.numTranslacaoX.Value = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 376);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(14, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "X";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(23, 416);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(14, 13);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "X";
-            // 
-            // numEscalaX
-            // 
-            this.numEscalaX.DecimalPlaces = 2;
-            this.numEscalaX.Location = new System.Drawing.Point(7, 429);
-            this.numEscalaX.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numEscalaX.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numEscalaX.Name = "numEscalaX";
-            this.numEscalaX.Size = new System.Drawing.Size(54, 20);
-            this.numEscalaX.TabIndex = 13;
-            this.numEscalaX.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            65536});
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(85, 416);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(14, 13);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Y";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(127, 429);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(109, 20);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Escala";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.bttAplicaEscala_Click);
-            // 
-            // numEscalaY
-            // 
-            this.numEscalaY.DecimalPlaces = 2;
-            this.numEscalaY.Location = new System.Drawing.Point(67, 429);
-            this.numEscalaY.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numEscalaY.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numEscalaY.Name = "numEscalaY";
-            this.numEscalaY.Size = new System.Drawing.Size(54, 20);
-            this.numEscalaY.TabIndex = 10;
-            this.numEscalaY.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            65536});
-            // 
-            // numRotacionar
-            // 
-            this.numRotacionar.Location = new System.Drawing.Point(7, 469);
-            this.numRotacionar.Maximum = new decimal(new int[] {
-            360,
-            0,
-            0,
-            0});
-            this.numRotacionar.Minimum = new decimal(new int[] {
-            360,
-            0,
-            0,
-            -2147483648});
-            this.numRotacionar.Name = "numRotacionar";
-            this.numRotacionar.Size = new System.Drawing.Size(114, 20);
-            this.numRotacionar.TabIndex = 15;
-            this.numRotacionar.Value = new decimal(new int[] {
-            90,
-            0,
-            0,
-            0});
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(47, 453);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "Graus";
-            // 
-            // bttRotacionar
-            // 
-            this.bttRotacionar.Location = new System.Drawing.Point(127, 467);
-            this.bttRotacionar.Name = "bttRotacionar";
-            this.bttRotacionar.Size = new System.Drawing.Size(109, 20);
-            this.bttRotacionar.TabIndex = 17;
-            this.bttRotacionar.Text = "Rotacionar";
-            this.bttRotacionar.UseVisualStyleBackColor = true;
-            this.bttRotacionar.Click += new System.EventHandler(this.bttRotacionar_Click);
-            // 
-            // comboBoxReflexao
-            // 
-            this.comboBoxReflexao.FormattingEnabled = true;
-            this.comboBoxReflexao.Items.AddRange(new object[] {
-            "Eixo X",
-            "Eixo Y",
-            "Ambos"});
-            this.comboBoxReflexao.Location = new System.Drawing.Point(7, 496);
-            this.comboBoxReflexao.Name = "comboBoxReflexao";
-            this.comboBoxReflexao.Size = new System.Drawing.Size(114, 21);
-            this.comboBoxReflexao.TabIndex = 18;
-            // 
-            // bttReflexao
-            // 
-            this.bttReflexao.Location = new System.Drawing.Point(127, 496);
-            this.bttReflexao.Name = "bttReflexao";
-            this.bttReflexao.Size = new System.Drawing.Size(109, 20);
-            this.bttReflexao.TabIndex = 19;
-            this.bttReflexao.Text = "Reflexão";
-            this.bttReflexao.UseVisualStyleBackColor = true;
-            this.bttReflexao.Click += new System.EventHandler(this.bttReflexao_Click);
             // 
             // label6
             // 
@@ -481,6 +254,329 @@
             0,
             65536});
             // 
+            // bttReflexao
+            // 
+            this.bttReflexao.Location = new System.Drawing.Point(127, 496);
+            this.bttReflexao.Name = "bttReflexao";
+            this.bttReflexao.Size = new System.Drawing.Size(109, 20);
+            this.bttReflexao.TabIndex = 19;
+            this.bttReflexao.Text = "Reflexão";
+            this.bttReflexao.UseVisualStyleBackColor = true;
+            this.bttReflexao.Click += new System.EventHandler(this.bttReflexao_Click);
+            // 
+            // comboBoxReflexao
+            // 
+            this.comboBoxReflexao.FormattingEnabled = true;
+            this.comboBoxReflexao.Items.AddRange(new object[] {
+            "Eixo X",
+            "Eixo Y",
+            "Ambos"});
+            this.comboBoxReflexao.Location = new System.Drawing.Point(7, 496);
+            this.comboBoxReflexao.Name = "comboBoxReflexao";
+            this.comboBoxReflexao.Size = new System.Drawing.Size(114, 21);
+            this.comboBoxReflexao.TabIndex = 18;
+            // 
+            // bttRotacionar
+            // 
+            this.bttRotacionar.Location = new System.Drawing.Point(127, 467);
+            this.bttRotacionar.Name = "bttRotacionar";
+            this.bttRotacionar.Size = new System.Drawing.Size(109, 20);
+            this.bttRotacionar.TabIndex = 17;
+            this.bttRotacionar.Text = "Rotacionar";
+            this.bttRotacionar.UseVisualStyleBackColor = true;
+            this.bttRotacionar.Click += new System.EventHandler(this.bttRotacionar_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(47, 453);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Graus";
+            // 
+            // numRotacionar
+            // 
+            this.numRotacionar.Location = new System.Drawing.Point(7, 469);
+            this.numRotacionar.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.numRotacionar.Minimum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            -2147483648});
+            this.numRotacionar.Name = "numRotacionar";
+            this.numRotacionar.Size = new System.Drawing.Size(114, 20);
+            this.numRotacionar.TabIndex = 15;
+            this.numRotacionar.Value = new decimal(new int[] {
+            90,
+            0,
+            0,
+            0});
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(23, 416);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(14, 13);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "X";
+            // 
+            // numEscalaX
+            // 
+            this.numEscalaX.DecimalPlaces = 2;
+            this.numEscalaX.Location = new System.Drawing.Point(7, 429);
+            this.numEscalaX.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numEscalaX.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numEscalaX.Name = "numEscalaX";
+            this.numEscalaX.Size = new System.Drawing.Size(54, 20);
+            this.numEscalaX.TabIndex = 13;
+            this.numEscalaX.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(85, 416);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(14, 13);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Y";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(127, 429);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(109, 20);
+            this.button2.TabIndex = 11;
+            this.button2.Text = "Escala";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.bttAplicaEscala_Click);
+            // 
+            // numEscalaY
+            // 
+            this.numEscalaY.DecimalPlaces = 2;
+            this.numEscalaY.Location = new System.Drawing.Point(67, 429);
+            this.numEscalaY.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numEscalaY.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numEscalaY.Name = "numEscalaY";
+            this.numEscalaY.Size = new System.Drawing.Size(54, 20);
+            this.numEscalaY.TabIndex = 10;
+            this.numEscalaY.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(23, 376);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(14, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "X";
+            // 
+            // numTranslacaoX
+            // 
+            this.numTranslacaoX.Location = new System.Drawing.Point(7, 389);
+            this.numTranslacaoX.Name = "numTranslacaoX";
+            this.numTranslacaoX.Size = new System.Drawing.Size(54, 20);
+            this.numTranslacaoX.TabIndex = 8;
+            this.numTranslacaoX.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(85, 376);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(14, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Y";
+            // 
+            // bttAplicaTranslacao
+            // 
+            this.bttAplicaTranslacao.Location = new System.Drawing.Point(127, 389);
+            this.bttAplicaTranslacao.Name = "bttAplicaTranslacao";
+            this.bttAplicaTranslacao.Size = new System.Drawing.Size(109, 20);
+            this.bttAplicaTranslacao.TabIndex = 5;
+            this.bttAplicaTranslacao.Text = "Translação";
+            this.bttAplicaTranslacao.UseVisualStyleBackColor = true;
+            this.bttAplicaTranslacao.Click += new System.EventHandler(this.bttAplicaTranslacao_Click);
+            // 
+            // numTranslacaoY
+            // 
+            this.numTranslacaoY.Location = new System.Drawing.Point(67, 389);
+            this.numTranslacaoY.Name = "numTranslacaoY";
+            this.numTranslacaoY.Size = new System.Drawing.Size(54, 20);
+            this.numTranslacaoY.TabIndex = 4;
+            this.numTranslacaoY.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            // 
+            // dataGridViewPontos
+            // 
+            this.dataGridViewPontos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewPontos.Location = new System.Drawing.Point(7, 201);
+            this.dataGridViewPontos.Name = "dataGridViewPontos";
+            this.dataGridViewPontos.Size = new System.Drawing.Size(230, 172);
+            this.dataGridViewPontos.TabIndex = 2;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(139, 172);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(97, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Excluir Polígono";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btnExcluir_Click);
+            // 
+            // listBoxPoligonos
+            // 
+            this.listBoxPoligonos.FormattingEnabled = true;
+            this.listBoxPoligonos.Location = new System.Drawing.Point(7, 6);
+            this.listBoxPoligonos.Name = "listBoxPoligonos";
+            this.listBoxPoligonos.Size = new System.Drawing.Size(230, 160);
+            this.listBoxPoligonos.TabIndex = 0;
+            this.listBoxPoligonos.SelectedIndexChanged += new System.EventHandler(this.listBoxPoligonos_SelectedIndexChanged);
+            // 
+            // tabOvais
+            // 
+            this.tabOvais.Location = new System.Drawing.Point(4, 22);
+            this.tabOvais.Name = "tabOvais";
+            this.tabOvais.Padding = new System.Windows.Forms.Padding(3);
+            this.tabOvais.Size = new System.Drawing.Size(244, 612);
+            this.tabOvais.TabIndex = 2;
+            this.tabOvais.Text = "Ovais";
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.Roxo);
+            this.tabPage1.Controls.Add(this.Verde);
+            this.tabPage1.Controls.Add(this.Amarelo);
+            this.tabPage1.Controls.Add(this.Azul);
+            this.tabPage1.Controls.Add(this.Vermelho);
+            this.tabPage1.Controls.Add(this.ScanLine);
+            this.tabPage1.Controls.Add(this.FloodFill);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(244, 612);
+            this.tabPage1.TabIndex = 3;
+            this.tabPage1.Text = "Preenchimento";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // ScanLine
+            // 
+            this.ScanLine.Location = new System.Drawing.Point(86, 3);
+            this.ScanLine.Name = "ScanLine";
+            this.ScanLine.Size = new System.Drawing.Size(75, 23);
+            this.ScanLine.TabIndex = 1;
+            this.ScanLine.Text = "ScanLine";
+            this.ScanLine.UseVisualStyleBackColor = true;
+            this.ScanLine.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // FloodFill
+            // 
+            this.FloodFill.Location = new System.Drawing.Point(4, 4);
+            this.FloodFill.Name = "FloodFill";
+            this.FloodFill.Size = new System.Drawing.Size(75, 23);
+            this.FloodFill.TabIndex = 0;
+            this.FloodFill.Text = "Flood Fill";
+            this.FloodFill.UseVisualStyleBackColor = true;
+            this.FloodFill.Click += new System.EventHandler(this.FloodFill_Click);
+            // 
+            // panel
+            // 
+            this.panel.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel.Location = new System.Drawing.Point(0, 0);
+            this.panel.Name = "panel";
+            this.panel.Size = new System.Drawing.Size(728, 638);
+            this.panel.TabIndex = 104;
+            this.panel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_Paint);
+            this.panel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_MouseClick);
+            this.panel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_MouseMove);
+            // 
+            // Vermelho
+            // 
+            this.Vermelho.BackColor = System.Drawing.Color.Red;
+            this.Vermelho.Location = new System.Drawing.Point(4, 34);
+            this.Vermelho.Name = "Vermelho";
+            this.Vermelho.Size = new System.Drawing.Size(24, 23);
+            this.Vermelho.TabIndex = 2;
+            this.Vermelho.UseVisualStyleBackColor = false;
+            this.Vermelho.Click += new System.EventHandler(this.Vermelho_Click);
+            // 
+            // Azul
+            // 
+            this.Azul.BackColor = System.Drawing.Color.Blue;
+            this.Azul.Location = new System.Drawing.Point(34, 34);
+            this.Azul.Name = "Azul";
+            this.Azul.Size = new System.Drawing.Size(23, 23);
+            this.Azul.TabIndex = 3;
+            this.Azul.UseVisualStyleBackColor = false;
+            this.Azul.Click += new System.EventHandler(this.Azul_Click);
+            // 
+            // Amarelo
+            // 
+            this.Amarelo.BackColor = System.Drawing.Color.Yellow;
+            this.Amarelo.Location = new System.Drawing.Point(92, 34);
+            this.Amarelo.Name = "Amarelo";
+            this.Amarelo.Size = new System.Drawing.Size(23, 23);
+            this.Amarelo.TabIndex = 4;
+            this.Amarelo.UseVisualStyleBackColor = false;
+            this.Amarelo.Click += new System.EventHandler(this.Amarelo_Click);
+            // 
+            // Verde
+            // 
+            this.Verde.BackColor = System.Drawing.Color.Green;
+            this.Verde.Location = new System.Drawing.Point(63, 34);
+            this.Verde.Name = "Verde";
+            this.Verde.Size = new System.Drawing.Size(23, 23);
+            this.Verde.TabIndex = 5;
+            this.Verde.UseVisualStyleBackColor = false;
+            this.Verde.Click += new System.EventHandler(this.Verde_Click);
+            // 
+            // Roxo
+            // 
+            this.Roxo.BackColor = System.Drawing.Color.Purple;
+            this.Roxo.Location = new System.Drawing.Point(121, 34);
+            this.Roxo.Name = "Roxo";
+            this.Roxo.Size = new System.Drawing.Size(23, 23);
+            this.Roxo.TabIndex = 6;
+            this.Roxo.UseVisualStyleBackColor = false;
+            this.Roxo.Click += new System.EventHandler(this.Roxo_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -496,14 +592,15 @@
             this.tabRetas.PerformLayout();
             this.tabPoligonos.ResumeLayout(false);
             this.tabPoligonos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numTranslacaoY)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPontos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numTranslacaoX)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numEscalaX)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numEscalaY)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numRotacionar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCisalhamentoX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCisalhamentoY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numRotacionar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEscalaX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEscalaY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numTranslacaoX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numTranslacaoY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPontos)).EndInit();
+            this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -542,5 +639,13 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button bttCisalhamento;
         private System.Windows.Forms.NumericUpDown numCisalhamentoY;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Button ScanLine;
+        private System.Windows.Forms.Button FloodFill;
+        private System.Windows.Forms.Button Amarelo;
+        private System.Windows.Forms.Button Azul;
+        private System.Windows.Forms.Button Vermelho;
+        private System.Windows.Forms.Button Verde;
+        private System.Windows.Forms.Button Roxo;
     }
 }
